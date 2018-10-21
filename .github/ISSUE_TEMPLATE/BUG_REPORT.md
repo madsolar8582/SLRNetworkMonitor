@@ -1,3 +1,7 @@
+---
+name: Bug Report
+about: Bug report template
+---
 <!-- Make sure you check any open/recently closed issues first to avoid duplicates -->
 ## Issue Description
 A clear and concise description of what the issue is.

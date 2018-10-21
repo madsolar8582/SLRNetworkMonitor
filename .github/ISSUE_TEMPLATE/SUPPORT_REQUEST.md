@@ -1,3 +1,7 @@
+---
+name: Support Request
+about: Support request template
+---
 ## Issue Description
 A clear and concise description of what the issue is.
 
