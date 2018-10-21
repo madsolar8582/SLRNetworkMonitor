@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.org/madsolar8582/SLRNetworkMonitor.svg?branch=master)](https://travis-ci.org/madsolar8582/SLRNetworkMonitor)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 ![Platforms: iOS | macOS | tvOS](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg)
-[![codebeat badge](https://codebeat.co/badges/cd6322a5-851a-4cfb-98f9-271fd987064f?style=flat-square)](https://codebeat.co/projects/github-com-madsolar8582-slrnetworkmonitor-master-4d7e0a2b-79f6-4c31-9ea7-1f8aa2a2e6ae)
-[![codecov](https://codecov.io/gh/madsolar8582/SLRNetworkMonitor/branch/master/graph/badge.svg)](https://codecov.io/gh/madsolar8582/SLRNetworkMonitor)
 
 Provides a wrapper around [NWPathMonitor](https://developer.apple.com/documentation/network/nw_path_monitor_t?language=objc) to replace [SCNetworkReachability](https://developer.apple.com/documentation/systemconfiguration/scnetworkreachability?language=objc).
 

@@ -2,5 +2,3 @@ language: objective-c
 osx_image: xcode10
 script: 
   - bash ci.sh
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
