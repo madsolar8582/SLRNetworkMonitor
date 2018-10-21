@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SLRNetworkMonitor Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/SLRNetworkMonitor" class="dashAnchor"></a>
+    <a title="SLRNetworkMonitor Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SLRNetworkMonitor Docs</a></p>
+        <p class="header-right"><a href="https://github.com/madsolar8582/SLRNetworkMonitor"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SLRNetworkMonitor Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        SLRNetworkMonitor Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/SLRNetworkMonitor.html">SLRNetworkMonitor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorCellularProvidersKey">SLRNetworkMonitorCellularProvidersKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorCellularRadioTechnologiesKey">SLRNetworkMonitorCellularRadioTechnologiesKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorDNSServersKey">SLRNetworkMonitorDNSServersKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorDidStartMonitoringNotification">SLRNetworkMonitorDidStartMonitoringNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorDidStopMonitoringNotification">SLRNetworkMonitorDidStopMonitoringNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkHasDNSKey">SLRNetworkMonitorNetworkHasDNSKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkIsExpensiveKey">SLRNetworkMonitorNetworkIsExpensiveKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkStateDidChangeNotification">SLRNetworkMonitorNetworkStateDidChangeNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkStatusKey">SLRNetworkMonitorNetworkStatusKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkSupportsIPv4Key">SLRNetworkMonitorNetworkSupportsIPv4Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkSupportsIPv6Key">SLRNetworkMonitorNetworkSupportsIPv6Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkUsesCellularKey">SLRNetworkMonitorNetworkUsesCellularKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkUsesWiFiKey">SLRNetworkMonitorNetworkUsesWiFiKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorNetworkUsesWiredKey">SLRNetworkMonitorNetworkUsesWiredKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@SLRNetworkMonitorUsableInterfacesKey">SLRNetworkMonitorUsableInterfacesKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:SLRNetworkMonitor.h@T@SLRNetworkMonitorUserInfoKey">SLRNetworkMonitorUserInfoKey</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>SLRNetworkMonitor</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">SLRNetworkMonitor</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>@class SLRNetworkMonitor
+Provides a way of monitoring network connectivity on a device.
+Objects created with the default configuration create their own serial queue to handle events and then use the main queue to post notifications on.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(py)monitorType"></a>
+                    <a name="//apple_ref/objc/Property/monitorType" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(py)monitorType">monitorType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type of the monitor.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="n"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span> <span class="n">monitorType</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">monitorType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(py)currentPath"></a>
+                    <a name="//apple_ref/objc/Property/currentPath" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(py)currentPath">currentPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current network path being monitored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">nw_path_t</span> <span class="n">currentPath</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">currentPath</span><span class="p">:</span> <span class="n">nw_path_t</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(im)initWithMonitorType:workQueue:notificationQueue:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithMonitorType:workQueue:notificationQueue:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(im)initWithMonitorType:workQueue:notificationQueue:">-initWithMonitorType:workQueue:notificationQueue:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Designated initializer that creates a new instance of a @c SLRNetworkMonitor of a specific type, work queue, &amp; notification queue.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use @c -init to get the default configuration.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithMonitorType</span><span class="p">:(</span><span class="n"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">)</span><span class="nv">monitorType</span>
+                                  <span class="nf">workQueue</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">dispatch_queue_t</span><span class="p">)</span><span class="nv">workQueue</span>
+                          <span class="nf">notificationQueue</span><span class="p">:</span>
+                              <span class="p">(</span><span class="n">nullable</span> <span class="n">dispatch_queue_t</span><span class="p">)</span><span class="nv">notificationQueue</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">monitorType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">,</span> <span class="n">work</span> <span class="nv">workQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?,</span> <span class="nv">notificationQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>monitorType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of monitor to create.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workQueue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue that handles monitor operations.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationQueue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to post status notifications to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new instance of @c SLRNetworkMonitor with the specified configuration.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(cm)monitorWithType:workQueue:notificationQueue:"></a>
+                    <a name="//apple_ref/objc/Method/+monitorWithType:workQueue:notificationQueue:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(cm)monitorWithType:workQueue:notificationQueue:">+monitorWithType:workQueue:notificationQueue:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer that creates a new instance of a @c SLRNetworkMonitor of a specific type, work queue, &amp; notification queue.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Use @c +monitor to get the default configuration.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">monitorWithType</span><span class="p">:(</span><span class="n"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">)</span><span class="nv">monitorType</span>
+                              <span class="nf">workQueue</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">dispatch_queue_t</span><span class="p">)</span><span class="nv">workQueue</span>
+                      <span class="nf">notificationQueue</span><span class="p">:</span>
+                          <span class="p">(</span><span class="n">nullable</span> <span class="n">dispatch_queue_t</span><span class="p">)</span><span class="nv">notificationQueue</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">type</span> <span class="nv">monitorType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">,</span> <span class="n">work</span> <span class="nv">workQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?,</span> <span class="nv">notificationQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>monitorType</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The type of monitor to create.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workQueue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue that handles monitor operations.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>notificationQueue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The queue to post status notifications to.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new instance of @c SLRNetworkMonitor with the specified configuration.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(cm)monitor"></a>
+                    <a name="//apple_ref/objc/Method/+monitor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(cm)monitor">+monitor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer that creates a new instance of a @c SLRNetworkMonitor with the default configuration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="n">monitor</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A new instance of @c SLRNetworkMonitor with the default configuration.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(im)startMonitoring"></a>
+                    <a name="//apple_ref/objc/Method/-startMonitoring" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(im)startMonitoring">-startMonitoring</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells a @c SLRNetworkMonitor to begin monitoring for network connectivity status changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">startMonitoring</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startMonitoring</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)SLRNetworkMonitor(im)stopMonitoring"></a>
+                    <a name="//apple_ref/objc/Method/-stopMonitoring" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(im)stopMonitoring">-stopMonitoring</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells a @c SLRNetworkMonitor to stop monitoring for network connectivity status changes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">stopMonitoring</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stopMonitoring</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2018 Madison Solarana</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,24 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+
+# These owners will be the default owners for everything in the repo.
+* @madsolar8582
+
+# Order is important. The last matching pattern has the most precedence.
+*.c @madsolar8582
+*.h @madsolar8582
+*.m @madsolar8582
+*.a @madsolar8582
+*.framework @madsolar8582
+*.xib @madsolar8582
+*.storyboard @madsolar8582
+*.plist @madsolar8582
+*.json @madsolar8582
+*.md @madsolar8582
+*.podspec @madsolar8582
+*.xcscheme @madsolar8582
+*.pbxproj @madsolar8582 
+*.xcworkspace @madsolar8582
+*.xcsettings @madsolar8582
+*.xcconfig @madsolar8582
+*.png @madsolar8582

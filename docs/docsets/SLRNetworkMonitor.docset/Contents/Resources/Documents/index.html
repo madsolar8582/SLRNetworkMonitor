@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SLRNetworkMonitor  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SLRNetworkMonitor  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SLRNetworkMonitor Docs</a></p>
+        <p class="header-right"><a href="https://github.com/madsolar8582/SLRNetworkMonitor"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SLRNetworkMonitor Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SLRNetworkMonitor  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SLRNetworkMonitor.html">SLRNetworkMonitor</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorCellularProvidersKey">SLRNetworkMonitorCellularProvidersKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorCellularRadioTechnologiesKey">SLRNetworkMonitorCellularRadioTechnologiesKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorDNSServersKey">SLRNetworkMonitorDNSServersKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorDidStartMonitoringNotification">SLRNetworkMonitorDidStartMonitoringNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorDidStopMonitoringNotification">SLRNetworkMonitorDidStopMonitoringNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkHasDNSKey">SLRNetworkMonitorNetworkHasDNSKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkIsExpensiveKey">SLRNetworkMonitorNetworkIsExpensiveKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkStateDidChangeNotification">SLRNetworkMonitorNetworkStateDidChangeNotification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkStatusKey">SLRNetworkMonitorNetworkStatusKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkSupportsIPv4Key">SLRNetworkMonitorNetworkSupportsIPv4Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkSupportsIPv6Key">SLRNetworkMonitorNetworkSupportsIPv6Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkUsesCellularKey">SLRNetworkMonitorNetworkUsesCellularKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkUsesWiFiKey">SLRNetworkMonitorNetworkUsesWiFiKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkUsesWiredKey">SLRNetworkMonitorNetworkUsesWiredKey</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorUsableInterfacesKey">SLRNetworkMonitorUsableInterfacesKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Type Definitions.html#/c:SLRNetworkMonitor.h@T@SLRNetworkMonitorUserInfoKey">SLRNetworkMonitorUserInfoKey</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='slrnetworkmonitor' class='heading'>SLRNetworkMonitor</h1>
+
+<p><a href="https://travis-ci.org/madsolar8582/SLRNetworkMonitor"><img src="https://travis-ci.org/madsolar8582/SLRNetworkMonitor.svg?branch=master" alt="Build Status"></a>
+<a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg" alt="License: LGPL v3"></a>
+<img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg" alt="Platforms: iOS | macOS | tvOS">
+<a href="https://codebeat.co/projects/github-com-madsolar8582-slrnetworkmonitor-master-4d7e0a2b-79f6-4c31-9ea7-1f8aa2a2e6ae"><img src="https://codebeat.co/badges/cd6322a5-851a-4cfb-98f9-271fd987064f?style=flat-square" alt="codebeat badge"></a>
+<a href="https://codecov.io/gh/madsolar8582/SLRNetworkMonitor"><img src="https://codecov.io/gh/madsolar8582/SLRNetworkMonitor/branch/master/graph/badge.svg" alt="codecov"></a></p>
+
+<p>Provides a wrapper around <a href="https://developer.apple.com/documentation/network/nw_path_monitor_t?language=objc">NWPathMonitor</a> to replace <a href="https://developer.apple.com/documentation/systemconfiguration/scnetworkreachability?language=objc">SCNetworkReachability</a>.</p>
+<h2 id='table-of-contents' class='heading'>Table of Contents</h2>
+
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#binary-installation">Binary Installation</a></li>
+<li><a href="#source-installation">Source Installation</a></li>
+<li><a href="#carthage">Carthage</a></li>
+<li><a href="#cocoapods">CocoaPods</a></li>
+<li><a href="#usage">Usage</a></li>
+</ul></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#support">Support</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#changes">Changes</a></li>
+<li><a href="#versioning">Versioning</a></li>
+<li><a href="#release-management">Release Management</a></li>
+</ul>
+<h2 id='getting-started' class='heading'>Getting Started</h2>
+
+<p>These instructions will get you up and running with SLRNetworkMonitor.</p>
+<h3 id='installation' class='heading'>Installation</h3>
+<h4 id='requirements' class='heading'>Requirements</h4>
+
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Minimum Xcode Version</th>
+<th>Minimum macOS SDK</th>
+<th>Minimum iOS SDK</th>
+<th>Minimum tvOS SDK</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1.0.0 -&gt; Current</td>
+<td>10.0</td>
+<td>10.14</td>
+<td>12.0</td>
+<td>12.0</td>
+</tr>
+</tbody></table>
+
+<p>This library depends on a few system frameworks and libraries. If you have Modules and Link Frameworks Automatically enabled, then there isn&rsquo;t much that needs to be done. However, if you do not, you need to link against the <code>Network</code>, <code>Foundation</code>, &amp; the <code>CoreTelephony</code> (iOS only) frameworks. Additionally, both types of configurations must manually add <code>libresolv</code> to the Link Binary With Libraries build phase.</p>
+<h4 id='binary-installation' class='heading'>Binary Installation</h4>
+
+<p>It is recommended to download the latest binary from the <a href="https://github.com/madsolar8582/SLRNetworkMonitor/releases">releases page</a> and then include it in your project. If you prefer a different integration method, there are options.</p>
+<h4 id='source-installation' class='heading'>Source Installation</h4>
+
+<p>If you want to build the library from source in your own project, you can either:</p>
+
+<ol>
+<li>Add the project as a <a href="https://git-scm.com/docs/git-submodule">submodule</a>.</li>
+<li>Add the project as a <a href="https://www.atlassian.com/blog/git/alternatives-to-git-submodule-git-subtree">subtree</a>.</li>
+<li>Copy the source files directly into your project.</li>
+</ol>
+
+<p>The submodule or subtree approach is recommended since you can easily obtain updates.</p>
+<h4 id='carthage' class='heading'>Carthage</h4>
+
+<p>If you do not already have <a href="https://github.com/Carthage/Carthage">Carthage</a> installed, you can install it via <a href="https://brew.sh/">Homebrew</a>:</p>
+<pre class="highlight shell"><code>brew install carthage
+</code></pre>
+
+<p>Once Carthage is installed, add SLRNetworkMonitor to your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "madsolar8582/SLRNetworkMonitor" ~&gt; 1.0.0
+</code></pre>
+
+<p>Finally, run <code>carthage</code> and take the resulting <code>SLRNetworkMonitor.framework</code> and put it in your project.</p>
+<h4 id='cocoapods' class='heading'>CocoaPods</h4>
+
+<p>If you do not already have <a href="https://cocoapods.org/">CocoaPods</a> installed, you can install it via <a href="https://brew.sh/">Homebrew</a> or you can install it via <code>gem</code>:</p>
+<pre class="highlight shell"><code>brew install cocoapods
+
+<span class="c"># OR</span>
+
+sudo gem install cocoapods <span class="c"># Note: sudo is required if you are installing to the system gemset</span>
+</code></pre>
+
+<p>Once CocoaPods is installed, add SLRNetworkMonitor to your <code>Podfile</code> or to your <code>Podspec</code> as a dependency:</p>
+<pre class="highlight yaml"><code><span class="c1"># Podfile</span>
+<span class="s">pod 'SLRNetworkMonitor', '~&gt; 1.0.0'</span>
+
+<span class="c1"># Podspec</span>
+<span class="s">s.dependency 'SLRNetworkMonitor', '~&gt; 1.0.0'</span>
+</code></pre>
+<h3 id='usage' class='heading'>Usage</h3>
+
+<p>To use this library, you need to create an instance of <code><a href="Classes/SLRNetworkMonitor.html">SLRNetworkMonitor</a></code> and then add an observer on the default Notification Center for the <code><a href="Constants.html#/c:@SLRNetworkMonitorNetworkStateDidChangeNotification">SLRNetworkMonitorNetworkStateDidChangeNotification</a></code> notification. </p>
+
+<p>⚠️ Note: you can control more attributes of the monitor by initializing it using the other initializers.</p>
+<pre class="highlight plaintext"><code>@import SLRNetworkMonitor;
+
+- (void)someMethod
+{
+  SLRNetworkMonitor *monitor = [SLRNetworkMonitor monitor];
+  self.networkMonitor = monitor;
+
+  [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleNetworkStateChange:) name:SLRNetworkMonitorNetworkStateDidChangeNotification object:monitor];
+  [monitor startMonitoring];
+}
+</code></pre>
+
+<p>⚠️ Note: you can pause network monitoring by calling <code>-stopMonitoring</code>.</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
+
+<p>Please read <a href=".github/CONTRIBUTING.md">CONTRIBUTING</a> for details on how to contribute.</p>
+<h2 id='support' class='heading'>Support</h2>
+
+<p>Please read <a href=".github/SUPPORT.md">SUPPORT</a> for details on how to get help with installation or usage.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>This project is licensed under the <a href="LICENSE.md">LGPL v3</a> license.</p>
+<h2 id='changes' class='heading'>Changes</h2>
+
+<p>Please read the <a href="CHANGELOG.md">CHANGELOG</a> for details on the changes included in each release.</p>
+<h2 id='versioning' class='heading'>Versioning</h2>
+
+<p>This project uses <a href="https://semver.org/">Semantic Versioning</a> for versioning. For the versions available, see the <a href="https://github.com/madsolar8582/SLRNetworkMonitor/releases">releases page</a>.</p>
+<h2 id='release-management' class='heading'>Release Management</h2>
+
+<p>This project releases monthly if there are enough changes to warrant a release. However, if there are critical defects or inadvertent non-passive changes, a one-off release will be created for each impacted release series.</p>
+
+<p>After a major version release, the older release series will stop receiving updates after 60 days and are then considered obsolete (and thus unsupported).</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2018 Madison Solarana</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

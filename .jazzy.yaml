@@ -1,0 +1,11 @@
+module: SLRNetworkMonitor
+author: Madison Solarana
+github_url: https://github.com/madsolar8582/SLRNetworkMonitor
+copyright: '© 2018 Madison Solarana'
+clean: true
+objc: true
+hide_documentation_coverage: true
+output: docs/
+framework_root: .
+umbrella_header: Source/SLRNetworkMonitor.h
+sdk: iphonesimulator
