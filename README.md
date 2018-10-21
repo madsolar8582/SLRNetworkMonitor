@@ -18,6 +18,7 @@ Provides a wrapper around [NWPathMonitor](https://developer.apple.com/documentat
     - [Carthage](#carthage)
     - [CocoaPods](#cocoapods)
   - [Usage](#usage)
+  - [Documentation](#documentation)
 - [Contributing](#contributing)
 - [Support](#support)
 - [License](#license)
@@ -108,21 +109,25 @@ To use this library, you need to create an instance of `SLRNetworkMonitor` and t
 
 ⚠️ Note: you can pause network monitoring by calling `-stopMonitoring`.
 
+### Documentation
+
+Additional documentation can be found on [GitHub Pages](https://madsolar8582.github.io/SLRNetworkMonitor/).
+
 ## Contributing
 
-Please read [CONTRIBUTING](.github/CONTRIBUTING.md) for details on how to contribute.
+Please read [CONTRIBUTING](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/.github/CONTRIBUTING.md) for details on how to contribute.
 
 ## Support
 
-Please read [SUPPORT](.github/SUPPORT.md) for details on how to get help with installation or usage.
+Please read [SUPPORT](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/.github/SUPPORT.md) for details on how to get help with installation or usage.
 
 ## License
 
-This project is licensed under the [LGPL v3](LICENSE.md) license.
+This project is licensed under the [LGPL v3](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/LICENSE.md) license.
 
 ## Changes
 
-Please read the [CHANGELOG](CHANGELOG.md) for details on the changes included in each release.
+Please read the [CHANGELOG](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/CHANGELOG.md) for details on the changes included in each release.
 
 ## Versioning
 
