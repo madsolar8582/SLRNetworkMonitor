@@ -42,6 +42,8 @@ This library depends on a few system frameworks and libraries. If you have Modul
 
 It is recommended to download the latest binary from the [releases page](https://github.com/madsolar8582/SLRNetworkMonitor/releases) and then include it in your project. If you prefer a different integration method, there are options.
 
+⚠️ Note: If you use the binary release, you will have strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example [1](https://github.com/realm/realm-cocoa/blob/c0e5f3c14a7cfae384147cf1e429593989a55abf/scripts/strip-frameworks.sh) and Example [2](https://gist.github.com/steipete/bbea370b72bbc77a8040).
+
 #### Source Installation
 
 If you want to build the library from source in your own project, you can either:

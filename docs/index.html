@@ -111,9 +111,7 @@
 
 <p><a href="https://travis-ci.org/madsolar8582/SLRNetworkMonitor"><img src="https://travis-ci.org/madsolar8582/SLRNetworkMonitor.svg?branch=master" alt="Build Status"></a>
 <a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg" alt="License: LGPL v3"></a>
-<img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg" alt="Platforms: iOS | macOS | tvOS">
-<a href="https://codebeat.co/projects/github-com-madsolar8582-slrnetworkmonitor-master-4d7e0a2b-79f6-4c31-9ea7-1f8aa2a2e6ae"><img src="https://codebeat.co/badges/cd6322a5-851a-4cfb-98f9-271fd987064f?style=flat-square" alt="codebeat badge"></a>
-<a href="https://codecov.io/gh/madsolar8582/SLRNetworkMonitor"><img src="https://codecov.io/gh/madsolar8582/SLRNetworkMonitor/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg" alt="Platforms: iOS | macOS | tvOS"></p>
 
 <p>Provides a wrapper around <a href="https://developer.apple.com/documentation/network/nw_path_monitor_t?language=objc">NWPathMonitor</a> to replace <a href="https://developer.apple.com/documentation/systemconfiguration/scnetworkreachability?language=objc">SCNetworkReachability</a>.</p>
 <h2 id='table-of-contents' class='heading'>Table of Contents</h2>
@@ -166,6 +164,8 @@
 <h4 id='binary-installation' class='heading'>Binary Installation</h4>
 
 <p>It is recommended to download the latest binary from the <a href="https://github.com/madsolar8582/SLRNetworkMonitor/releases">releases page</a> and then include it in your project. If you prefer a different integration method, there are options.</p>
+
+<p>⚠️ Note: If you use the binary release, you will have strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example <a href="https://github.com/realm/realm-cocoa/blob/c0e5f3c14a7cfae384147cf1e429593989a55abf/scripts/strip-frameworks.sh">1</a> and Example <a href="https://gist.github.com/steipete/bbea370b72bbc77a8040">2</a>.</p>
 <h4 id='source-installation' class='heading'>Source Installation</h4>
 
 <p>If you want to build the library from source in your own project, you can either:</p>
