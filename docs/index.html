@@ -200,10 +200,10 @@ sudo gem install cocoapods <span class="c"># Note: sudo is required if you are i
 
 <p>Once CocoaPods is installed, add SLRNetworkMonitor to your <code>Podfile</code> or to your <code>Podspec</code> as a dependency:</p>
 <pre class="highlight yaml"><code><span class="c1"># Podfile</span>
-<span class="s">pod 'SLRNetworkMonitor', '~&gt; 1.0.0'</span>
+<span class="s">pod 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0.0'</span>
 
 <span class="c1"># Podspec</span>
-<span class="s">s.dependency 'SLRNetworkMonitor', '~&gt; 1.0.0'</span>
+<span class="s">s.dependency 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0.0'</span>
 </code></pre>
 <h3 id='usage' class='heading'>Usage</h3>
 

@@ -71,7 +71,7 @@ if [[ "$iOSSymbolMaps" -ne 1 ]]; then
 fi
 
 if [[ "$tvOSSymbolMaps" -ne 1 ]]; then
-  echo -e "\niOS bitcode symbol maps are missing"
+  echo -e "\ntvOS bitcode symbol maps are missing"
   exit 1
 fi
 
