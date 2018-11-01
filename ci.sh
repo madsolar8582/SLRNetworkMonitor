@@ -4,9 +4,9 @@
 set -Eeuxo pipefail
 
 echo -e "Runing iOS Tests\n"
-# Parallel test arm64 & arm64e
-xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone X' -destination 'platform=iOS Simulator,OS=latest,name=iPhone Xs' -enableThreadSanitizer YES -enableUndefinedBehaviorSanitizer YES
-xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone X' -destination 'platform=iOS Simulator,OS=latest,name=iPhone Xs' -enableAddressSanitizer YES
+# Parallel test arm64 & arm64e by adding -destination 'platform=iOS Simulator,OS=latest,name=iPhone Xs' when Apple makes Valid Archs include arm64e
+xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone X' -enableThreadSanitizer YES -enableUndefinedBehaviorSanitizer YES
+xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone X' -enableAddressSanitizer YES
 
 # Disable macOS tests until Travis CI has a Mojave image
 #echo -e "Running macOS Tests\n"
