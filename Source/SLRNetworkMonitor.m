@@ -335,14 +335,16 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             }
             
             NSString *interfaceName = @(currentInterface->ifa_name);
-            NSMutableArray<NSString *> *addressStrings = interfaceAddresses[interfaceName];
-            if (!addressStrings) {
-                addressStrings = [NSMutableArray array];
-                interfaceAddresses[interfaceName] = addressStrings;
-            }
             
-            os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Checking interface %{public}@ for addresses", class_getName([self class]), self, interfaceName);
             if ([interfaces containsObject:interfaceName]) {
+                os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Checking interface %{public}@ for addresses", class_getName([self class]), self, interfaceName);
+                
+                NSMutableArray<NSString *> *addressStrings = interfaceAddresses[interfaceName];
+                if (!addressStrings) {
+                    addressStrings = [NSMutableArray array];
+                    interfaceAddresses[interfaceName] = addressStrings;
+                }
+                
                 if (currentInterface->ifa_addr->sa_family == AF_INET) { // IPv4 address
                     char buffer[INET_ADDRSTRLEN];
                     struct sockaddr_in *address = (struct sockaddr_in *)currentInterface->ifa_addr;
@@ -369,6 +371,9 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                         os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to convert IPv6 address to string for interface %{public}@", class_getName([self class]), self, interfaceName);
                     }
                 }
+            }
+            else {
+                os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Skipping interface %{public}@", class_getName([self class]), self, interfaceName);
             }
             
             currentInterface = currentInterface->ifa_next;
