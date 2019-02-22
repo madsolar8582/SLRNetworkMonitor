@@ -1,6 +1,5 @@
 # SLRNetworkMonitor
 
-[![Build Status](https://travis-ci.org/madsolar8582/SLRNetworkMonitor.svg?branch=master)](https://travis-ci.org/madsolar8582/SLRNetworkMonitor)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 ![Platforms: iOS | macOS | tvOS](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg)
 

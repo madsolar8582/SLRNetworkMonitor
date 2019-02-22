@@ -1,4 +1,0 @@
-language: objective-c
-osx_image: xcode10.1
-script: 
-  - bash ci.sh
