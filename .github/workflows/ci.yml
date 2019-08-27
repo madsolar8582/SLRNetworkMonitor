@@ -6,4 +6,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run CI script
-      run: ci.sh
+      run: ./ci.sh
