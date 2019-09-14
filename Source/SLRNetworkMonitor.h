@@ -1,5 +1,5 @@
 /**
- * Copyright (©) 2018 Madison Solarana
+ * Copyright (©) 2019 Madison Solarana
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -90,6 +90,11 @@ FOUNDATION_EXPORT SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkSup
  * Notification user info key that contains a boolean of whether or not the current network has a DNS configuration wrapped in a @c NSNumber.
  */
 FOUNDATION_EXPORT SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkHasDNSKey;
+
+/**
+ * Notification user info key that contains a boolean of whether or not the current network is constrained.
+ */
+FOUNDATION_EXPORT SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkIsConstrainedKey API_AVAILABLE(macos(10.15), ios(13.0), watchos(6.0), tvos(13.0));
 
 /**
  * Notification user info key that contains a @c NSDictionary of interface names (@c NSString) to a @c NSArray of their usable address(es).

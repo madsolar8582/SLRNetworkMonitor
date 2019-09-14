@@ -57,6 +57,9 @@
                 <a href="Constants.html#/c:@SLRNetworkMonitorNetworkHasDNSKey">SLRNetworkMonitorNetworkHasDNSKey</a>
               </li>
               <li class="nav-group-task">
+                <a href="Constants.html#/c:@SLRNetworkMonitorNetworkIsConstrainedKey">SLRNetworkMonitorNetworkIsConstrainedKey</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Constants.html#/c:@SLRNetworkMonitorNetworkIsExpensiveKey">SLRNetworkMonitorNetworkIsExpensiveKey</a>
               </li>
               <li class="nav-group-task">
@@ -94,10 +97,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Type Definitions.html">Type Definitions</a>
+            <a href="Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Type Definitions.html#/c:SLRNetworkMonitor.h@T@SLRNetworkMonitorUserInfoKey">SLRNetworkMonitorUserInfoKey</a>
+                <a href="Type%20Definitions.html#/c:SLRNetworkMonitor.h@T@SLRNetworkMonitorUserInfoKey">SLRNetworkMonitorUserInfoKey</a>
               </li>
             </ul>
           </li>
@@ -109,9 +112,8 @@
             
             <h1 id='slrnetworkmonitor' class='heading'>SLRNetworkMonitor</h1>
 
-<p><a href="https://travis-ci.org/madsolar8582/SLRNetworkMonitor"><img src="https://travis-ci.org/madsolar8582/SLRNetworkMonitor.svg?branch=master" alt="Build Status"></a>
-<a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg" alt="License: LGPL v3"></a>
-<img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg" alt="Platforms: iOS | macOS | tvOS"></p>
+<p><a href="https://www.gnu.org/licenses/lgpl-3.0"><img src="https://img.shields.io/badge/License-LGPL%20v3-blue.svg" alt="License: LGPL v3"></a>
+<img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg" alt="Platforms: iOS | macOS | tvOS | watchOS"></p>
 
 <p>Provides a wrapper around <a href="https://developer.apple.com/documentation/network/nw_path_monitor_t?language=objc">NWPathMonitor</a> to replace <a href="https://developer.apple.com/documentation/systemconfiguration/scnetworkreachability?language=objc">SCNetworkReachability</a>.</p>
 <h2 id='table-of-contents' class='heading'>Table of Contents</h2>
@@ -149,14 +151,24 @@
 <th>Minimum macOS SDK</th>
 <th>Minimum iOS SDK</th>
 <th>Minimum tvOS SDK</th>
+<th>Minimum watchOS SDK</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>1.0.0 -&gt; Current</td>
+<td>2.0.0 -&gt; Current</td>
+<td>11.0</td>
+<td>10.14</td>
+<td>12.0</td>
+<td>12.0</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>1.0.0</td>
 <td>10.0</td>
 <td>10.14</td>
 <td>12.0</td>
 <td>12.0</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
@@ -184,7 +196,7 @@
 </code></pre>
 
 <p>Once Carthage is installed, add SLRNetworkMonitor to your <code>Cartfile</code>:</p>
-<pre class="highlight plaintext"><code>github "madsolar8582/SLRNetworkMonitor" ~&gt; 1.0.0
+<pre class="highlight plaintext"><code>github "madsolar8582/SLRNetworkMonitor" ~&gt; 2.0.0
 </code></pre>
 
 <p>Finally, run <code>carthage</code> and take the resulting <code>SLRNetworkMonitor.framework</code> and put it in your project.</p>
@@ -200,10 +212,10 @@ sudo gem install cocoapods <span class="c"># Note: sudo is required if you are i
 
 <p>Once CocoaPods is installed, add SLRNetworkMonitor to your <code>Podfile</code> or to your <code>Podspec</code> as a dependency:</p>
 <pre class="highlight yaml"><code><span class="c1"># Podfile</span>
-<span class="s">pod 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0.0'</span>
+<span class="s">pod 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.0.0'</span>
 
 <span class="c1"># Podspec</span>
-<span class="s">s.dependency 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">1.0.0'</span>
+<span class="s">s.dependency 'SLRNetworkMonitor', git</span><span class="pi">:</span> <span class="s1">'</span><span class="s">https://github.com/madsolar8582/SLRNetworkMonitor.git'</span><span class="err">,</span> <span class="na">tag</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.0.0'</span>
 </code></pre>
 <h3 id='usage' class='heading'>Usage</h3>
 
@@ -250,8 +262,8 @@ sudo gem install cocoapods <span class="c"># Note: sudo is required if you are i
           </section>
         </section>
         <section id="footer">
-          <p>© 2018 Madison Solarana</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>© 2019 Madison Solarana</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

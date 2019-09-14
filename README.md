@@ -1,7 +1,7 @@
 # SLRNetworkMonitor
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
-![Platforms: iOS | macOS | tvOS](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg)
+![Platforms: iOS | macOS | tvOS | watchOS](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg)
 
 Provides a wrapper around [NWPathMonitor](https://developer.apple.com/documentation/network/nw_path_monitor_t?language=objc) to replace [SCNetworkReachability](https://developer.apple.com/documentation/systemconfiguration/scnetworkreachability?language=objc).
 
@@ -31,9 +31,10 @@ These instructions will get you up and running with SLRNetworkMonitor.
 
 #### Requirements
 
-| Version | Minimum Xcode Version | Minimum macOS SDK | Minimum iOS SDK | Minimum tvOS SDK |
-| ------- | --------------------- | ----------------- | --------------- | ---------------- |
-| 1.0.0 -> Current | 10.0 | 10.14 | 12.0 | 12.0 |
+| Version | Minimum Xcode Version | Minimum macOS SDK | Minimum iOS SDK | Minimum tvOS SDK | Minimum watchOS SDK |
+| ------- | --------------------- | ----------------- | --------------- | ---------------- | ------------------- |
+| 2.0.0 -> Current | 11.0 | 10.14 | 12.0 | 12.0 | 6.0 |
+| 1.0.0 | 10.0 | 10.14 | 12.0 | 12.0 | N/A |
 
 This library depends on a few system frameworks and libraries. If you have Modules and Link Frameworks Automatically enabled, then there isn't much that needs to be done. However, if you do not, you need to link against the `Network`, `Foundation`, & the `CoreTelephony` (iOS only) frameworks. Additionally, both types of configurations must manually add `libresolv` to the Link Binary With Libraries build phase.
 
@@ -62,7 +63,7 @@ brew install carthage
 
 Once Carthage is installed, add SLRNetworkMonitor to your `Cartfile`:
 ```
-github "madsolar8582/SLRNetworkMonitor" ~> 1.0.0
+github "madsolar8582/SLRNetworkMonitor" ~> 2.0.0
 ```
 
 Finally, run `carthage` and take the resulting `SLRNetworkMonitor.framework` and put it in your project.
@@ -81,10 +82,10 @@ sudo gem install cocoapods # Note: sudo is required if you are installing to the
 Once CocoaPods is installed, add SLRNetworkMonitor to your `Podfile` or to your `Podspec` as a dependency:
 ```yaml
 # Podfile
-pod 'SLRNetworkMonitor', git: 'https://github.com/madsolar8582/SLRNetworkMonitor.git', tag: '1.0.0'
+pod 'SLRNetworkMonitor', git: 'https://github.com/madsolar8582/SLRNetworkMonitor.git', tag: '2.0.0'
 
 # Podspec
-s.dependency 'SLRNetworkMonitor', git: 'https://github.com/madsolar8582/SLRNetworkMonitor.git', tag: '1.0.0'
+s.dependency 'SLRNetworkMonitor', git: 'https://github.com/madsolar8582/SLRNetworkMonitor.git', tag: '2.0.0'
 ```
 
 ### Usage

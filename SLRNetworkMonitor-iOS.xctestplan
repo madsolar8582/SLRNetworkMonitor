@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "BCCABD40-CFF7-4EAF-9345-36502DB96CBC",
+      "name" : "Threading and Undefined Behavior Tests",
+      "options" : {
+        "threadSanitizerEnabled" : true,
+        "undefinedBehaviorSanitizerEnabled" : true
+      }
+    },
+    {
+      "id" : "9EEE266D-C51A-40A9-85E1-0023F6FBD349",
+      "name" : "Memory Tests",
+      "options" : {
+        "addressSanitizer" : {
+          "detectStackUseAfterReturn" : true,
+          "enabled" : true
+        },
+        "mallocScribbleEnabled" : true
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SLRNetworkMonitor.xcodeproj",
+        "identifier" : "873F36B5217B789F007E986B",
+        "name" : "SLRNetworkMonitor-iOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}

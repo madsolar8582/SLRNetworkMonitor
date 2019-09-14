@@ -1,5 +1,5 @@
 /**
- * Copyright (©) 2018 Madison Solarana
+ * Copyright (©) 2019 Madison Solarana
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -57,6 +57,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkSupportsIPv6Key = @"c
 SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkHasDNSKey = @"com.solarana.network.monitor.SLRNetworkMonitorNetworkHasDNSKey";
 SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorUsableInterfacesKey = @"com.solarana.network.monitor.SLRNetworkMonitorUsableInterfacesKey";
 SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorDNSServersKey = @"com.solarana.network.monitor.SLRNetworkMonitorDNSServersKey";
+SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorNetworkIsConstrainedKey = @"com.solarana.network.monitor.SLRNetworkMonitorNetworkIsConstrainedKey";
 SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularProvidersKey = @"com.solarana.network.monitor.SLRNetworkMonitorCellularProvidersKey";
 SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey = @"com.solarana.network.monitor.SLRNetworkMonitorCellularRadioTechnologiesKey";
 
@@ -150,6 +151,12 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             BOOL supportsIPv4 = nw_path_has_ipv4(path);
             BOOL supportsIPv6 = nw_path_has_ipv6(path);
             BOOL hasDNS = nw_path_has_dns(path);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+            BOOL isConstrained = NO;
+            if (@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)) {
+                isConstrained = nw_path_is_constrained(path);
+            }
+#endif
             NSArray<NSString *> *usableInterfaces;
             NSArray<NSString *> *dnsServers;
             NSDictionary<NSString *, NSArray<NSString *> *> *interfaceAddresses;
@@ -198,6 +205,11 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             userInfo[SLRNetworkMonitorNetworkSupportsIPv4Key] = @(supportsIPv4);
             userInfo[SLRNetworkMonitorNetworkSupportsIPv6Key] = @(supportsIPv6);
             userInfo[SLRNetworkMonitorNetworkHasDNSKey] = @(hasDNS);
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+            if (@available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)) {
+                userInfo[SLRNetworkMonitorNetworkIsConstrainedKey] = @(isConstrained);
+            }
+#endif
             userInfo[SLRNetworkMonitorUsableInterfacesKey] = interfaceAddresses ?: @{};
             userInfo[SLRNetworkMonitorDNSServersKey] = dnsServers ?: @[];
 #if TARGET_OS_IOS
@@ -205,7 +217,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             userInfo[SLRNetworkMonitorCellularRadioTechnologiesKey] = currentCellStatuses ?: @{};
 #endif
             
-            os_log_info(OS_LOG_DEFAULT, "<%{public}s: %p> network connectivity status changed to %d", class_getName([self class]), self, status);
+            os_log_info(OS_LOG_DEFAULT, "<%{public}s: %p> network connectivity status changed to %d", class_getName([strongSelf class]), strongSelf, status);
             [strongSelf postNotification:SLRNetworkMonitorNetworkStateDidChangeNotification withUserInfo:[userInfo copy]];
         });
         
@@ -238,10 +250,10 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
 
 - (NSString *)debugDescription
 {
-    return [NSString stringWithFormat:@"<%s: %p> {\n\tMonitor Type: %lx\n\tMonitor: %@\n\tWork Queue: %@\n\tNotification Queue: %@\n\tCurrent Path: %@\n}",
+    return [NSString stringWithFormat:@"<%s: %p> {\n\tMonitor Type: %lu\n\tMonitor: %@\n\tWork Queue: %@\n\tNotification Queue: %@\n\tCurrent Path: %@\n}",
             class_getName([self class]),
             self,
-            self.monitorType,
+            (unsigned long)self.monitorType,
             self.networkMonitor,
             self.workQueue,
             self.notificationQueue,
@@ -307,7 +319,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
         return true;
     });
     
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lx interfaces to examine", class_getName([self class]), self, usableInterfaces.count);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lu interfaces to examine", class_getName([self class]), self, (unsigned long)usableInterfaces.count);
     return [usableInterfaces copy];
 }
 
@@ -388,7 +400,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
     NSMutableDictionary<NSString *, NSArray<NSString *> *> *result = [NSMutableDictionary dictionaryWithCapacity:interfaceAddresses.count];
     for (NSString *key in interfaceAddresses.allKeys) {
         result[key] = [interfaceAddresses[key] copy];
-        os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lx addresses for interface %{public}@", class_getName([self class]), self, interfaceAddresses[key].count, key);
+        os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lu addresses for interface %{public}@", class_getName([self class]), self, (unsigned long)interfaceAddresses[key].count, key);
     }
     
     return [result copy];
@@ -443,7 +455,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
     
     free(state);
     
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> found %lx DNS servers", class_getName([self class]), self, dnsServers.count);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> found %lu DNS servers", class_getName([self class]), self, (unsigned long)dnsServers.count);
     return [dnsServers copy];
 }
 

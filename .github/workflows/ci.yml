@@ -5,5 +5,8 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Run CI script
-      run: ./ci.sh
+    - name: Build and Test
+      run: |
+        sudo xcode-select --switch /Applications/Xcode_11.app
+        xcrun xcodebuild -version
+        ./ci.sh
