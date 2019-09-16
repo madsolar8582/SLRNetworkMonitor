@@ -28,7 +28,7 @@ if ! (grep -q "x86_64 arm64" <<< "$iOSArchitectures"); then
 fi
 
 if ! (grep -q "x86_64" <<< "$macOSArchitectures"); then
-  echo -e "\niOS architectures did not validate"
+  echo -e "\nmacOS architectures did not validate"
   exit 1
 fi
 
@@ -37,7 +37,7 @@ if ! (grep -q "x86_64 arm64" <<< "$tvOSArchitectures"); then
   exit 1
 fi
 
-if ! (grep -q "1386 armv7k arm64_32" <<< "$watchOSArchitectures"); then
+if ! (grep -q "i386 armv7k arm64_32" <<< "$watchOSArchitectures"); then
   echo -e "\nwatchOS architectures did not validate"
   exit 1
 fi

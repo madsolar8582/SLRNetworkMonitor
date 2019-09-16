@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.ios.libraries             = 'resolv' 
   s.macos.libraries           = 'resolv'
   s.tvos.libraries            = 'resolv'
-  s.source                    = { :git => 'https://github.com/madsolar8582/SLRNetworkMonitor.git', :tag => s.version.to_s }
+  s.source                    = { git: 'https://github.com/madsolar8582/SLRNetworkMonitor.git', tag: s.version.to_s }
   s.source_files              = 'Source/**/*.{h,m}'
   s.requires_arc              = true
 end

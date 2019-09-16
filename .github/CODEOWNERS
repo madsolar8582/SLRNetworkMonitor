@@ -22,3 +22,10 @@
 *.xcsettings @madsolar8582
 *.xcconfig @madsolar8582
 *.png @madsolar8582
+*.xctestplan @madsolar8582
+*.sh @madsolar8582
+*.yaml @madsolar8582
+*.yml @madsolar8582
+*.html @madsolar8582
+*.js @madsolar8582
+*.css @madsolar8582
