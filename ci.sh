@@ -3,7 +3,7 @@
 set -Eeuxo pipefail
 
 echo -e "Runing iOS Tests\n"
-env NSUnbufferedIO=YES xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone Xs' -testPlan SLRNetworkMonitor-iOS
+env NSUnbufferedIO=YES xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Debug -destination 'platform=iOS Simulator,OS=latest,name=iPhone 11' -testPlan SLRNetworkMonitor-iOS
 
 echo -e "Running macOS Tests\n"
 env NSUnbufferedIO=YES xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-macOS -configuration Debug -testPlan SLRNetworkMonitor-macOS
