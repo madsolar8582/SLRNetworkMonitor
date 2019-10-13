@@ -47,7 +47,7 @@ This is the recommended installation method. Follow the [instructions provided b
 
 You may download the latest binary from the [releases page](https://github.com/madsolar8582/SLRNetworkMonitor/releases) and then include it in your project.
 
-⚠️ Note: If you use the binary release (not a .xcframework), you will have strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example: [Stack Overflow](https://stackoverflow.com/a/42642209).
+⚠️ Note: If you use the binary release (not a .xcframework), you will need to strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example: [Stack Overflow](https://stackoverflow.com/a/42642209).
 
 #### Source Installation
 
