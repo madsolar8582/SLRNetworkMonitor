@@ -1,5 +1,6 @@
 # SLRNetworkMonitor
 
+[![Actions Status](https://github.com/madsolar8582/SLRNetworkMonitor/workflows/CI/badge.svg)](https://github.com/madsolar8582/SLRNetworkMonitor/actions)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 ![Platforms: iOS | macOS | tvOS | watchOS](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg)
 
