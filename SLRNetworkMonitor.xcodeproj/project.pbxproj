@@ -76,6 +76,7 @@
 		8776DFF822A6FDEA00086BE1 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		87A174BF22A6FD6B0026876E /* SLRNetworkMonitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SLRNetworkMonitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A174C222A6FD6B0026876E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87FBA9B623534BD50009CBBC /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +240,7 @@
 		87E954B1217B780F0017F7D1 = {
 			isa = PBXGroup;
 			children = (
+				87FBA9B623534BD50009CBBC /* Package.swift */,
 				873F3693217B787E007E986B /* SLRNetworkMonitor-macOS */,
 				873F369E217B787E007E986B /* SLRNetworkMonitor-macOSTests */,
 				873F36AF217B789F007E986B /* SLRNetworkMonitor-iOS */,
@@ -426,7 +428,7 @@
 		87E954B2217B780F0017F7D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1120;
 				TargetAttributes = {
 					873F3690217B787E007E986B = {
 						CreatedOnToolsVersion = 10.0;

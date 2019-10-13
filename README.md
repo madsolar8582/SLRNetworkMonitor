@@ -38,11 +38,15 @@ These instructions will get you up and running with SLRNetworkMonitor.
 
 This library depends on a few system frameworks and libraries. If you have Modules and Link Frameworks Automatically enabled, then there isn't much that needs to be done. However, if you do not, you need to link against the `Network`, `Foundation`, & the `CoreTelephony` (iOS only) frameworks. Additionally, both types of configurations must manually add `libresolv` to the Link Binary With Libraries build phase.
 
+#### Swift Package Installation
+
+This is the recommended installation method. Follow the [instructions provided by Apple](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) using this repository's URL.
+
 #### Binary Installation
 
-It is recommended to download the latest binary from the [releases page](https://github.com/madsolar8582/SLRNetworkMonitor/releases) and then include it in your project. If you prefer a different integration method, there are options.
+You may download the latest binary from the [releases page](https://github.com/madsolar8582/SLRNetworkMonitor/releases) and then include it in your project.
 
-⚠️ Note: If you use the binary release, you will have strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example [1](https://github.com/realm/realm-cocoa/blob/c0e5f3c14a7cfae384147cf1e429593989a55abf/scripts/strip-frameworks.sh) and Example [2](https://gist.github.com/steipete/bbea370b72bbc77a8040).
+⚠️ Note: If you use the binary release (not a .xcframework), you will have strip the simulator architectures from the framework on iOS and tvOS as App Store Connect disallows unused architectures from being submitted. This is not needed if Carthage or CocoaPods is used. Example: [Stack Overflow](https://stackoverflow.com/a/42642209).
 
 #### Source Installation
 
@@ -52,7 +56,7 @@ If you want to build the library from source in your own project, you can either
 2. Add the project as a [subtree](https://www.atlassian.com/blog/git/alternatives-to-git-submodule-git-subtree).
 3. Copy the source files directly into your project.
 
-The submodule or subtree approach is recommended since you can easily obtain updates.
+The submodule or subtree approaches are preferred over the copying of source files since you can easily obtain updates.
 
 #### Carthage
 
