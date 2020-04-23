@@ -12,9 +12,9 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Build and Test
       run: |
-        sudo xcode-select --switch /Applications/Xcode_11.2.app
+        sudo xcode-select --switch /Applications/Xcode_11.4.app
         xcrun xcodebuild -version
         ./ci.sh

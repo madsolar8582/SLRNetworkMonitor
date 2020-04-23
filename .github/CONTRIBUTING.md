@@ -2,7 +2,7 @@
 
 Thanks for contributing! The following is a set of guidelines for contributions to this project. As Pirates of the Caribbean pointed out, guidelines != rules. Therefore, use your best judgement and feel free to propose changes to this process.
 
-This project adheres to the [Contributor Covenant v1.4.1](CODE_OF_CONDUCT.md), so you are expected to uphold the requirements of that Code of Conduct.
+This project adheres to the [Contributor Covenant v2.0](CODE_OF_CONDUCT.md), so you are expected to uphold the requirements of that Code of Conduct.
 
 Also, contributions are only accepted if the committer accepts the Contributor License Agreement (CLA). This project uses the Developer Certificate of Origin (DCO):
 > Developer Certificate of Origin

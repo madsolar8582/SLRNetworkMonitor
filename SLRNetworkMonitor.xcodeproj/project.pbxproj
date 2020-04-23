@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -428,7 +428,7 @@
 		87E954B2217B780F0017F7D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1140;
 				TargetAttributes = {
 					873F3690217B787E007E986B = {
 						CreatedOnToolsVersion = 10.0;
@@ -454,7 +454,7 @@
 				};
 			};
 			buildConfigurationList = 87E954B5217B780F0017F7D1 /* Build configuration list for PBXProject "SLRNetworkMonitor" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (

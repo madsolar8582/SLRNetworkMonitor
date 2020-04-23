@@ -21,7 +21,8 @@
     }
   ],
   "defaultOptions" : {
-
+    "testExecutionOrdering" : "random",
+    "testTimeoutsEnabled" : true
   },
   "testTargets" : [
     {

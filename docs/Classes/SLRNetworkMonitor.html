@@ -145,7 +145,7 @@ Objects created with the default configuration create their own serial queue to 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="n"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span> <span class="n">monitorType</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">)</span> <span class="n"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span> <span class="n">monitorType</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -177,7 +177,7 @@ Objects created with the default configuration create their own serial queue to 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">nw_path_t</span> <span class="n">currentPath</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">nw_path_t</span> <span class="n">currentPath</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
@@ -194,7 +194,7 @@ Objects created with the default configuration create their own serial queue to 
                     <code>
                     <a name="/c:objc(cs)SLRNetworkMonitor(im)initWithMonitorType:workQueue:notificationQueue:"></a>
                     <a name="//apple_ref/objc/Method/-initWithMonitorType:workQueue:notificationQueue:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(im)initWithMonitorType:workQueue:notificationQueue:">-initWithMonitorType:workQueue:notificationQueue:</a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(im)initWithMonitorType:workQueue:notificationQueue:">-initWithMonitorType:<wbr>workQueue:<wbr>notificationQueue:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -202,10 +202,10 @@ Objects created with the default configuration create their own serial queue to 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Designated initializer that creates a new instance of a @c SLRNetworkMonitor of a specific type, work queue, &amp; notification queue.</p>
+                        <p>Designated initializer that creates a new instance of a <code>SLRNetworkMonitor</code> of a specific type, work queue, &amp; notification queue.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Use @c -init to get the default configuration.
+    Use <code>-init</code> to get the default configuration.
 
 </div>
 
@@ -271,7 +271,7 @@ Objects created with the default configuration create their own serial queue to 
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A new instance of @c SLRNetworkMonitor with the specified configuration.</p>
+                        <p>A new instance of <code>SLRNetworkMonitor</code> with the specified configuration.</p>
                       </div>
                     </section>
                   </div>
@@ -281,7 +281,7 @@ Objects created with the default configuration create their own serial queue to 
                     <code>
                     <a name="/c:objc(cs)SLRNetworkMonitor(cm)monitorWithType:workQueue:notificationQueue:"></a>
                     <a name="//apple_ref/objc/Method/+monitorWithType:workQueue:notificationQueue:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(cm)monitorWithType:workQueue:notificationQueue:">+monitorWithType:workQueue:notificationQueue:</a>
+                    <a class="token" href="#/c:objc(cs)SLRNetworkMonitor(cm)monitorWithType:workQueue:notificationQueue:">+monitorWithType:<wbr>workQueue:<wbr>notificationQueue:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -289,10 +289,10 @@ Objects created with the default configuration create their own serial queue to 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Convenience initializer that creates a new instance of a @c SLRNetworkMonitor of a specific type, work queue, &amp; notification queue.</p>
+                        <p>Convenience initializer that creates a new instance of a <code>SLRNetworkMonitor</code> of a specific type, work queue, &amp; notification queue.</p>
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
-    Use @c +monitor to get the default configuration.
+    Use <code><a href="../Classes/SLRNetworkMonitor.html#/c:objc(cs)SLRNetworkMonitor(cm)monitor">+monitor</a></code> to get the default configuration.
 
 </div>
 
@@ -309,7 +309,7 @@ Objects created with the default configuration create their own serial queue to 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">type</span> <span class="nv">monitorType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">,</span> <span class="n">work</span> <span class="nv">workQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?,</span> <span class="nv">notificationQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="n">type</span> <span class="nv">monitorType</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRNetworkMonitorType.html">SLRNetworkMonitorType</a></span><span class="p">,</span> <span class="n">work</span> <span class="nv">workQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?,</span> <span class="nv">notificationQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -358,7 +358,7 @@ Objects created with the default configuration create their own serial queue to 
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A new instance of @c SLRNetworkMonitor with the specified configuration.</p>
+                        <p>A new instance of <code>SLRNetworkMonitor</code> with the specified configuration.</p>
                       </div>
                     </section>
                   </div>
@@ -376,7 +376,7 @@ Objects created with the default configuration create their own serial queue to 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Convenience initializer that creates a new instance of a @c SLRNetworkMonitor with the default configuration.</p>
+                        <p>Convenience initializer that creates a new instance of a <code>SLRNetworkMonitor</code> with the default configuration.</p>
 
                       </div>
                       <div class="declaration">
@@ -389,7 +389,7 @@ Objects created with the default configuration create their own serial queue to 
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A new instance of @c SLRNetworkMonitor with the default configuration.</p>
+                        <p>A new instance of <code>SLRNetworkMonitor</code> with the default configuration.</p>
                       </div>
                     </section>
                   </div>
@@ -407,7 +407,7 @@ Objects created with the default configuration create their own serial queue to 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Tells a @c SLRNetworkMonitor to begin monitoring for network connectivity status changes.</p>
+                        <p>Tells a <code>SLRNetworkMonitor</code> to begin monitoring for network connectivity status changes.</p>
 
                       </div>
                       <div class="declaration">
@@ -439,7 +439,7 @@ Objects created with the default configuration create their own serial queue to 
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Tells a @c SLRNetworkMonitor to stop monitoring for network connectivity status changes.</p>
+                        <p>Tells a <code>SLRNetworkMonitor</code> to stop monitoring for network connectivity status changes.</p>
 
                       </div>
                       <div class="declaration">
@@ -464,7 +464,7 @@ Objects created with the default configuration create their own serial queue to 
         </section>
         <section id="footer">
           <p>© 2019 Madison Solarana</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
