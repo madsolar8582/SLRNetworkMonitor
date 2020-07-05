@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1140"
+   LastUpgradeVersion = "1200"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -28,15 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "873F36AD217B789F007E986B"
-            BuildableName = "SLRNetworkMonitor.framework"
-            BlueprintName = "SLRNetworkMonitor-iOS"
-            ReferencedContainer = "container:SLRNetworkMonitor.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <TestPlans>
          <TestPlanReference
             reference = "container:SLRNetworkMonitor-iOS.xctestplan"

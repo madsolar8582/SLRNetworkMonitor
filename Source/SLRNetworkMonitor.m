@@ -1,5 +1,5 @@
 /**
- * Copyright (©) 2019 Madison Solarana
+ * Copyright (©) 2020 Madison Solarana
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -20,12 +20,6 @@
 @import os.log;
 #else
 #import <os/log.h>
-#endif
-
-#if __has_feature(modules)
-@import ObjectiveC.runtime;
-#else
-#import <objc/runtime.h>
 #endif
 
 #if TARGET_OS_IOS
@@ -217,7 +211,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             userInfo[SLRNetworkMonitorCellularRadioTechnologiesKey] = currentCellStatuses ?: @{};
 #endif
             
-            os_log_info(OS_LOG_DEFAULT, "<%{public}s: %p> network connectivity status changed to %d", class_getName([strongSelf class]), strongSelf, status);
+            os_log_info(OS_LOG_DEFAULT, "<%{public}@: %p> network connectivity status changed to %d", NSStringFromClass([strongSelf class]), strongSelf, status);
             [strongSelf postNotification:SLRNetworkMonitorNetworkStateDidChangeNotification withUserInfo:[userInfo copy]];
         });
         
@@ -250,8 +244,8 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
 
 - (NSString *)debugDescription
 {
-    return [NSString stringWithFormat:@"<%s: %p> {\n\tMonitor Type: %lu\n\tMonitor: %@\n\tWork Queue: %@\n\tNotification Queue: %@\n\tCurrent Path: %@\n}",
-            class_getName([self class]),
+    return [NSString stringWithFormat:@"<%@: %p> {\n\tMonitor Type: %lu\n\tMonitor: %@\n\tWork Queue: %@\n\tNotification Queue: %@\n\tCurrent Path: %@\n}",
+            NSStringFromClass([self class]),
             self,
             (unsigned long)self.monitorType,
             self.networkMonitor,
@@ -264,14 +258,14 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
 
 - (void)startMonitoring
 {
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> starting network monitoring", class_getName([self class]), self);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> starting network monitoring", NSStringFromClass([self class]), self);
     nw_path_monitor_start(self.networkMonitor);
     [self postNotification:SLRNetworkMonitorDidStartMonitoringNotification withUserInfo:nil];
 }
 
 - (void)stopMonitoring
 {
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> stopping network monitoring", class_getName([self class]), self);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> stopping network monitoring", NSStringFromClass([self class]), self);
     nw_path_monitor_cancel(self.networkMonitor);
 }
 
@@ -300,26 +294,26 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
         nw_interface_type_t interfaceType = nw_interface_get_type(interface);
         
         if (usesWiFi && interfaceType == nw_interface_type_wifi) {
-            os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding interface %{public}@ as a viable WiFi interface", class_getName([self class]), self, interfaceName);
+            os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding interface %{public}@ as a viable WiFi interface", NSStringFromClass([self class]), self, interfaceName);
             [usableInterfaces addObject:interfaceName];
         }
         else if (usesCellular && interfaceType == nw_interface_type_cellular) {
-            os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding interface %{public}@ as a viable Cellular interface", class_getName([self class]), self, interfaceName);
+            os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding interface %{public}@ as a viable Cellular interface", NSStringFromClass([self class]), self, interfaceName);
             [usableInterfaces addObject:interfaceName];
         }
         else if (usesWired && interfaceType == nw_interface_type_wired) {
-            os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding interface %{public}@ as a viable Wired interface", class_getName([self class]), self, interfaceName);
+            os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding interface %{public}@ as a viable Wired interface", NSStringFromClass([self class]), self, interfaceName);
             [usableInterfaces addObject:interfaceName];
         }
         else {
             // This is a VPN or Loopback interface. VPNs will ultimately use another interface and Loopbacks don't give us Internet connectivity, so ignore.
-            os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Skipping interface %{public}@ as a viable interface", class_getName([self class]), self, interfaceName);
+            os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Skipping interface %{public}@ as a viable interface", NSStringFromClass([self class]), self, interfaceName);
         }
         
         return true;
     });
     
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lu interfaces to examine", class_getName([self class]), self, (unsigned long)usableInterfaces.count);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Found %lu interfaces to examine", NSStringFromClass([self class]), self, (unsigned long)usableInterfaces.count);
     return [usableInterfaces copy];
 }
 
@@ -349,7 +343,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             NSString *interfaceName = @(currentInterface->ifa_name);
             
             if ([interfaces containsObject:interfaceName]) {
-                os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Checking interface %{public}@ for addresses", class_getName([self class]), self, interfaceName);
+                os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Checking interface %{public}@ for addresses", NSStringFromClass([self class]), self, interfaceName);
                 
                 NSMutableArray<NSString *> *addressStrings = interfaceAddresses[interfaceName];
                 if (!addressStrings) {
@@ -363,11 +357,11 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                     
                     if (inet_ntop(AF_INET, &(address->sin_addr), buffer, sizeof(buffer))) {
                         NSString *addressString = @(buffer);
-                        os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding %{public}@ for interface %{public}@", class_getName([self class]), self, addressString, interfaceName);
+                        os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding %{public}@ for interface %{public}@", NSStringFromClass([self class]), self, addressString, interfaceName);
                         [addressStrings addObject:addressString];
                     }
                     else {
-                        os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to convert IPv4 address to string for interface %{public}@", class_getName([self class]), self, interfaceName);
+                        os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to convert IPv4 address to string for interface %{public}@", NSStringFromClass([self class]), self, interfaceName);
                     }
                 }
                 else if (currentInterface->ifa_addr->sa_family == AF_INET6) { // IPv6 address
@@ -376,23 +370,23 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                     
                     if (inet_ntop(AF_INET6, &(address->sin6_addr), buffer, sizeof(buffer))) {
                         NSString *addressString = @(buffer);
-                        os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding %{public}@ for interface %{public}@", class_getName([self class]), self, addressString, interfaceName);
+                        os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding %{public}@ for interface %{public}@", NSStringFromClass([self class]), self, addressString, interfaceName);
                         [addressStrings addObject:addressString];
                     }
                     else {
-                        os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to convert IPv6 address to string for interface %{public}@", class_getName([self class]), self, interfaceName);
+                        os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to convert IPv6 address to string for interface %{public}@", NSStringFromClass([self class]), self, interfaceName);
                     }
                 }
             }
             else {
-                os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Skipping interface %{public}@", class_getName([self class]), self, interfaceName);
+                os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Skipping interface %{public}@", NSStringFromClass([self class]), self, interfaceName);
             }
             
             currentInterface = currentInterface->ifa_next;
         }
     }
     else {
-        os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to get network interfaces", class_getName([self class]), self);
+        os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to get network interfaces", NSStringFromClass([self class]), self);
     }
     
     freeifaddrs(deviceInterfaces);
@@ -400,7 +394,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
     NSMutableDictionary<NSString *, NSArray<NSString *> *> *result = [NSMutableDictionary dictionaryWithCapacity:interfaceAddresses.count];
     for (NSString *key in interfaceAddresses.allKeys) {
         result[key] = [interfaceAddresses[key] copy];
-        os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Found %lu addresses for interface %{public}@", class_getName([self class]), self, (unsigned long)interfaceAddresses[key].count, key);
+        os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Found %lu addresses for interface %{public}@", NSStringFromClass([self class]), self, (unsigned long)interfaceAddresses[key].count, key);
     }
     
     return [result copy];
@@ -426,11 +420,11 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                 
                 if (inet_ntop(AF_INET, &server.sin.sin_addr, buffer, sizeof(buffer))) {
                     NSString *dnsServer = @(buffer);
-                    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding %{public}@ as a DNS server", class_getName([self class]), self, dnsServer);
+                    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding %{public}@ as a DNS server", NSStringFromClass([self class]), self, dnsServer);
                     [dnsServers addObject:dnsServer];
                 }
                 else {
-                    os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to convert IPv4 address to string for DNS server", class_getName([self class]), self);
+                    os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to convert IPv4 address to string for DNS server", NSStringFromClass([self class]), self);
                 }
             }
             else if (server.sin6.sin6_family == AF_INET6) { // IPv6 address
@@ -438,11 +432,11 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                 
                 if (inet_ntop(AF_INET6, &server.sin6.sin6_addr, buffer, sizeof(buffer))) {
                     NSString *dnsServer = @(buffer);
-                    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> Adding %{public}@ as a DNS server", class_getName([self class]), self, dnsServer);
+                    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> Adding %{public}@ as a DNS server", NSStringFromClass([self class]), self, dnsServer);
                     [dnsServers addObject:dnsServer];
                 }
                 else {
-                    os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to convert IPv6 address to string for DNS server", class_getName([self class]), self);
+                    os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to convert IPv6 address to string for DNS server", NSStringFromClass([self class]), self);
                 }
             }
         }
@@ -450,12 +444,12 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
         res_ndestroy(state);
     }
     else {
-        os_log_error(OS_LOG_DEFAULT, "<%{public}s: %p> unable to get DNS servers", class_getName([self class]), self);
+        os_log_error(OS_LOG_DEFAULT, "<%{public}@: %p> unable to get DNS servers", NSStringFromClass([self class]), self);
     }
     
     free(state);
     
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> found %lu DNS servers", class_getName([self class]), self, (unsigned long)dnsServers.count);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> found %lu DNS servers", NSStringFromClass([self class]), self, (unsigned long)dnsServers.count);
     return [dnsServers copy];
 }
 
@@ -467,7 +461,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
 - (void)postNotification:(NSNotificationName)notification withUserInfo:(nullable NSDictionary<id, id> *)userInfo
 {
     NSParameterAssert(notification != nil);
-    os_log_debug(OS_LOG_DEFAULT, "<%{public}s: %p> posting notification: %{public}@", class_getName([self class]), self, notification);
+    os_log_debug(OS_LOG_DEFAULT, "<%{public}@: %p> posting notification: %{public}@", NSStringFromClass([self class]), self, notification);
     
     __weak __auto_type weakSelf = self;
     dispatch_async(self.notificationQueue, ^{
