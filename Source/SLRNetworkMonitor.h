@@ -1,5 +1,5 @@
 /**
- * Copyright (©) 2020 Madison Solarana
+ * Copyright (©) 2021 Madison Solarana
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -106,7 +106,7 @@ FOUNDATION_EXPORT SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorUsableInte
  */
 FOUNDATION_EXPORT SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorDNSServersKey;
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
 
 /**
  * Notification user info key that contains a @c NSDictionary of cellular services (@c NSString) to a @c CTCarrier objects that contain information about the cellular provider.

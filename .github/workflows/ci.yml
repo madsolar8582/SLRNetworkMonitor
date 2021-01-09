@@ -15,6 +15,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build and Test
       run: |
-        sudo xcode-select --switch /Applications/Xcode_12_beta.app
+        sudo xcode-select --switch /Applications/Xcode_12.3.app
         xcrun xcodebuild -version
         ./ci.sh

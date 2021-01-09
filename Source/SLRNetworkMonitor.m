@@ -1,5 +1,5 @@
 /**
- * Copyright (©) 2020 Madison Solarana
+ * Copyright (©) 2021 Madison Solarana
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -154,7 +154,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
             NSArray<NSString *> *usableInterfaces;
             NSArray<NSString *> *dnsServers;
             NSDictionary<NSString *, NSArray<NSString *> *> *interfaceAddresses;
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
             NSDictionary<NSString *, NSString *> *currentCellStatuses;
             NSDictionary<NSString *, CTCarrier *> *currentCellProviders;
 #endif
@@ -179,7 +179,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
                     dnsServers = [SLRNetworkMonitor activeDNSServers];
                 }
                 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
                 if (usesCellular) {
                     CTTelephonyNetworkInfo *cellNetworkInfo = [[CTTelephonyNetworkInfo alloc] init];
                     currentCellStatuses = cellNetworkInfo.serviceCurrentRadioAccessTechnology;
@@ -206,7 +206,7 @@ SLRNetworkMonitorUserInfoKey const SLRNetworkMonitorCellularRadioTechnologiesKey
 #endif
             userInfo[SLRNetworkMonitorUsableInterfacesKey] = interfaceAddresses ?: @{};
             userInfo[SLRNetworkMonitorDNSServersKey] = dnsServers ?: @[];
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
             userInfo[SLRNetworkMonitorCellularProvidersKey] = currentCellProviders ?: @{};
             userInfo[SLRNetworkMonitorCellularRadioTechnologiesKey] = currentCellStatuses ?: @{};
 #endif
