@@ -11,21 +11,21 @@ fi
 echo -e "\nBuilding the frameworks for distribution"
 
 echo -e "\nBuilding iOS Device"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS -sdk iphoneos -archivePath build/archives/ios.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS -sdk iphoneos -archivePath build/archives/ios.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding iOS Simulator"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS\ Simulator -sdk iphonesimulator -archivePath build/archives/ios-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS\ Simulator -sdk iphonesimulator -archivePath build/archives/ios-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding Mac Catalyst"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination 'platform=macOS,variant=Mac Catalyst' -archivePath build/archives/ios-cat.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination 'platform=macOS,variant=Mac Catalyst' -archivePath build/archives/ios-cat.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding macOS"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-macOS -configuration Release -archivePath build/archives/mac.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-macOS -configuration Release -archivePath build/archives/mac.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding tvOS Device"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS -archivePath build/archives/tvos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS -archivePath build/archives/tvos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding tvOS Simulator"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS\ Simulator -archivePath build/archives/tvos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS\ Simulator -archivePath build/archives/tvos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding watchOS Device"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS -archivePath build/archives/watchos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS -archivePath build/archives/watchos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding watchOS Simulator"
-xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS\ Simulator -archivePath build/archives/watchos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS\ Simulator -archivePath build/archives/watchos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 iOSBCMaps=()
 tvBCMaps=()
