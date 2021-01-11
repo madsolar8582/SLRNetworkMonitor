@@ -3,119 +3,129 @@
 # Lint with https://www.shellcheck.net/ when making changes
 set -Eeuo pipefail
 
-if ! carthage_location="$(type -p carthage)" || [[ -z "$carthage_location" ]]; then
-  echo -e "\nUnable to find carthage. Is it installed?"
-  exit 127
-fi
-
-if [[ -d "Carthage/Build" ]]; then
-  echo -e "\nRemoving existing Carthage/Build folder"
-  rm -rfv "Carthage/Build"
+if [[ -d "build" ]]; then
+  echo -e "\nRemoving existing build folder"
+  rm -rfv "build"
 fi
 
 echo -e "\nBuilding the frameworks for distribution"
-carthage build --verbose --no-skip-current 
 
-echo -e "\nVerifying builds contain required architectures"
-iOSArchitectures=$(lipo -info Carthage/Build/iOS/SLRNetworkMonitor.framework/SLRNetworkMonitor)
-macOSArchitectures=$(lipo -info Carthage/Build/Mac/SLRNetworkMonitor.framework/SLRNetworkMonitor)
-tvOSArchitectures=$(lipo -info Carthage/Build/tvOS/SLRNetworkMonitor.framework/SLRNetworkMonitor)
-watchOSArchitectures=$(lipo -info Carthage/Build/watchOS/SLRNetworkMonitor.framework/SLRNetworkMonitor)
+echo -e "\nBuilding iOS Device"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS -sdk iphoneos -archivePath build/archives/ios.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding iOS Simulator"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS\ Simulator -sdk iphonesimulator -archivePath build/archives/ios-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding Mac Catalyst"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination 'platform=macOS,variant=Mac Catalyst' -archivePath build/archives/ios-cat.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding macOS"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-macOS -configuration Release -archivePath build/archives/mac.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding tvOS Device"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS -archivePath build/archives/tvos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding tvOS Simulator"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-tvOS -configuration Release -destination generic/platform=tvOS\ Simulator -archivePath build/archives/tvos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding watchOS Device"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS -archivePath build/archives/watchos.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+echo -e "\nBuilding watchOS Simulator"
+xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-watchOS -configuration Release -destination generic/platform=watchOS\ Simulator -archivePath build/archives/watchos-sim.xcarchive SKIP_INSTALL=NO BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
 
-if ! (grep -q "x86_64 arm64" <<< "$iOSArchitectures"); then
-  echo -e "\niOS architectures did not validate"
-  exit 1
-fi
+iOSBCMaps=()
+tvBCMaps=()
+watchBCMaps=()
 
-if ! (grep -q "x86_64" <<< "$macOSArchitectures"); then
-  echo -e "\nmacOS architectures did not validate"
-  exit 1
-fi
+echo -e "\nFinding iOS Bitcode Symbol Maps"
+while IFS= read -d '' -r filename; do
+    iOSBCMaps+=("$filename")
+done < <(find "$(pwd -P)"/build/archives -path "*ios*" -name "*.bcsymbolmap" -print0)
 
-if ! (grep -q "x86_64 arm64" <<< "$tvOSArchitectures"); then
-  echo -e "\ntvOS architectures did not validate"
-  exit 1
-fi
+echo -e "\nFinding tvOS Bitcode Symbol Maps"
+while IFS= read -d '' -r filename; do
+    tvBCMaps+=("$filename")
+done < <(find "$(pwd -P)"/build/archives -path "*tv*" -name "*.bcsymbolmap" -print0)
 
-if ! (grep -q "i386 armv7k arm64_32" <<< "$watchOSArchitectures"); then
-  echo -e "\nwatchOS architectures did not validate"
-  exit 1
-fi
+echo -e "\nFinding watchOS Bitcode Symbol Maps"
+while IFS= read -d '' -r filename; do
+    watchBCMaps+=("$filename")
+done < <(find "$(pwd -P)"/build/archives -path "*watch*" -name "*.bcsymbolmap" -print0)
 
-echo -e "\nVerifying dSYMs contain required UUIDs"
-iOSDwarfOutput=$(dwarfdump -u Carthage/Build/iOS/SLRNetworkMonitor.framework.dSYM)
-macOSDwarfOutput=$(dwarfdump -u Carthage/Build/Mac/SLRNetworkMonitor.framework.dSYM)
-tvOSDwarfOutput=$(dwarfdump -u Carthage/Build/tvOS/SLRNetworkMonitor.framework.dSYM)
-watchOSDwarfOutput=$(dwarfdump -u Carthage/Build/watchOS/SLRNetworkMonitor.framework.dSYM)
-iOSUUIDs="$(grep -c "UUID:" <<< "$iOSDwarfOutput")"
-macOSUUIDs="$(grep -c "UUID:" <<< "$macOSDwarfOutput")"
-tvOSUUIDs="$(grep -c "UUID:" <<< "$tvOSDwarfOutput")"
-watchOSUUIDs="$(grep -c "UUID:" <<< "$watchOSDwarfOutput")"
+set +u
+iOSBCMapCount=${#iOSBCMaps[@]}
+tvBCMapCount=${#tvBCMaps[@]}
+watchBCMapCount=${#watchBCMaps[@]}
+set -u
 
-if [[ "$iOSUUIDs" -ne 2 ]]; then
-  echo -e "\niOS dSYM is missing mappings"
-  exit 1
-fi
+iOSDebugSymbols=""
+tvDebugSymbols=""
+watchDebugSymbols=""
 
-if [[ "$macOSUUIDs" -ne 1 ]]; then
-  echo -e "\nmacOS dSYM is missing mappings"
-  exit 1
-fi
+echo -e "\nGenerating iOS Bitcode Symbol Map command"
+for ((i=0;i<iOSBCMapCount;i++)); do
+  iOSDebugSymbols+=" -debug-symbols ${iOSBCMaps[i]}"
+done
 
-if [[ "$tvOSUUIDs" -ne 2 ]]; then
-  echo -e "\ntvOS dSYM is missing mappings"
-  exit 1
-fi
+echo -e "\nGenerating tvOS Bitcode Symbol Map command"
+for ((i=0;i<tvBCMapCount;i++)); do
+  tvDebugSymbols+=" -debug-symbols ${tvBCMaps[i]}"
+done
 
-if [[ "$watchOSUUIDs" -ne 3 ]]; then
-  echo -e "\nwatchOS dSYM is missing mappings"
-  exit 1
-fi
+echo -e "\nGenerating watchOS Bitcode Symbol Map command"
+for ((i=0;i<watchBCMapCount;i++)); do
+  watchDebugSymbols+=" -debug-symbols ${watchBCMaps[i]}"
+done
 
-echo -e "\nVerifying bcsymbolmaps are present"
-# shellcheck disable=SC2012
-iOSSymbolMaps=$(ls Carthage/Build/iOS/*.bcsymbolmap | wc -l)
-# shellcheck disable=SC2012
-tvOSSymbolMaps=$(ls Carthage/Build/tvOS/*.bcsymbolmap | wc -l)
-# shellcheck disable=SC2012
-watchOSSymbolMaps=$(ls Carthage/Build/watchOS/*.bcsymbolmap | wc -l)
+echo -e "\nCreating iOS XCFramework"
+# shellcheck disable=SC2086
+xcodebuild -create-xcframework -framework build/archives/ios.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/ios.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+-framework build/archives/ios-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/ios-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+-framework build/archives/ios-cat.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/ios-cat.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$iOSDebugSymbols \
+-output build/frameworks/iOS/SLRNetworkMonitor.xcframework
 
-if [[ "$iOSSymbolMaps" -ne 1 ]]; then
-  echo -e "\niOS bitcode symbol maps are missing"
-  exit 1
-fi
+echo -e "\nCreating macOS XCFramework"
+xcodebuild -create-xcframework -framework build/archives/mac.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/mac.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+-output build/frameworks/macOS/SLRNetworkMonitor.xcframework
 
-if [[ "$tvOSSymbolMaps" -ne 1 ]]; then
-  echo -e "\ntvOS bitcode symbol maps are missing"
-  exit 1
-fi
+echo -e "\nCreating tvOS XCFramework"
+# shellcheck disable=SC2086
+xcodebuild -create-xcframework -framework build/archives/tvos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/tvos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+-framework build/archives/tvos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/tvos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$tvDebugSymbols \
+-output build/frameworks/tvOS/SLRNetworkMonitor.xcframework
 
-if [[ "$watchOSSymbolMaps" -ne 2 ]]; then
-  echo -e "\nwatchOS bitcode symbol maps are missing"
-  exit 1
-fi
+echo -e "\nCreating watchOS XCFramework"
+# shellcheck disable=SC2086
+xcodebuild -create-xcframework -framework build/archives/watchos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/watchos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+-framework build/archives/watchos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-debug-symbols "$(pwd -P)"/build/archives/watchos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$watchDebugSymbols \
+-output build/frameworks/watchOS/SLRNetworkMonitor.xcframework
 
 echo -e "\nCreating distribution archives"
 rootDirectory="$PWD"
-cd Carthage/Build/iOS/
+cd build/frameworks/iOS/
 echo -e "\nCreating iOS archive"
 zip -r -o SLRNetworkMonitor-iOS.zip .
 mv SLRNetworkMonitor-iOS.zip "$rootDirectory"
 cd "$rootDirectory"
 
-cd Carthage/Build/Mac/
+cd build/frameworks/macOS/
 echo -e "\nCreating macOS archive"
 zip -r -o SLRNetworkMonitor-macOS.zip .
 mv SLRNetworkMonitor-macOS.zip "$rootDirectory"
 cd "$rootDirectory"
 
-cd Carthage/Build/tvOS/
+cd build/frameworks/tvOS/
 echo -e "\nCreating tvOS archive"
 zip -r -o SLRNetworkMonitor-tvOS.zip .
 mv SLRNetworkMonitor-tvOS.zip "$rootDirectory"
 cd "$rootDirectory"
 
-cd Carthage/Build/watchOS/
+cd build/frameworks/watchOS/
 echo -e "\nCreating watchOS archive"
 zip -r -o SLRNetworkMonitor-watchOS.zip .
 mv SLRNetworkMonitor-watchOS.zip "$rootDirectory"
