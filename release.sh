@@ -75,11 +75,11 @@ echo -e "\nCreating iOS XCFramework"
 # shellcheck disable=SC2086
 xcodebuild -create-xcframework -framework build/archives/ios.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/ios.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$iOSDebugSymbols \
 -framework build/archives/ios-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/ios-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
 -framework build/archives/ios-cat.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/ios-cat.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
-$iOSDebugSymbols \
 -output build/frameworks/iOS/SLRNetworkMonitor.xcframework
 
 echo -e "\nCreating macOS XCFramework"
@@ -91,18 +91,18 @@ echo -e "\nCreating tvOS XCFramework"
 # shellcheck disable=SC2086
 xcodebuild -create-xcframework -framework build/archives/tvos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/tvos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$tvDebugSymbols \
 -framework build/archives/tvos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/tvos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
-$tvDebugSymbols \
 -output build/frameworks/tvOS/SLRNetworkMonitor.xcframework
 
 echo -e "\nCreating watchOS XCFramework"
 # shellcheck disable=SC2086
 xcodebuild -create-xcframework -framework build/archives/watchos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/watchos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
+$watchDebugSymbols \
 -framework build/archives/watchos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/watchos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
-$watchDebugSymbols \
 -output build/frameworks/watchOS/SLRNetworkMonitor.xcframework
 
 echo -e "\nCreating distribution archives"
