@@ -80,55 +80,26 @@ $iOSDebugSymbols \
 -debug-symbols "$(pwd -P)"/build/archives/ios-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
 -framework build/archives/ios-cat.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/ios-cat.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
--output build/frameworks/iOS/SLRNetworkMonitor.xcframework
-
-echo -e "\nCreating macOS XCFramework"
-xcodebuild -create-xcframework -framework build/archives/mac.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-framework build/archives/mac.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/mac.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
--output build/frameworks/macOS/SLRNetworkMonitor.xcframework
-
-echo -e "\nCreating tvOS XCFramework"
-# shellcheck disable=SC2086
-xcodebuild -create-xcframework -framework build/archives/tvos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-framework build/archives/tvos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/tvos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
 $tvDebugSymbols \
 -framework build/archives/tvos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/tvos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
--output build/frameworks/tvOS/SLRNetworkMonitor.xcframework
-
-echo -e "\nCreating watchOS XCFramework"
-# shellcheck disable=SC2086
-xcodebuild -create-xcframework -framework build/archives/watchos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
+-framework build/archives/watchos.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/watchos.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
 $watchDebugSymbols \
 -framework build/archives/watchos-sim.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/watchos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
--output build/frameworks/watchOS/SLRNetworkMonitor.xcframework
+-output build/framework/SLRNetworkMonitor.xcframework
 
-echo -e "\nCreating distribution archives"
+echo -e "\nCreating distribution archive"
 rootDirectory="$PWD"
-cd build/frameworks/iOS/
-echo -e "\nCreating iOS archive"
-zip -r -o SLRNetworkMonitor-iOS.zip .
-mv SLRNetworkMonitor-iOS.zip "$rootDirectory"
-cd "$rootDirectory"
-
-cd build/frameworks/macOS/
-echo -e "\nCreating macOS archive"
-zip -r -o SLRNetworkMonitor-macOS.zip .
-mv SLRNetworkMonitor-macOS.zip "$rootDirectory"
-cd "$rootDirectory"
-
-cd build/frameworks/tvOS/
-echo -e "\nCreating tvOS archive"
-zip -r -o SLRNetworkMonitor-tvOS.zip .
-mv SLRNetworkMonitor-tvOS.zip "$rootDirectory"
-cd "$rootDirectory"
-
-cd build/frameworks/watchOS/
-echo -e "\nCreating watchOS archive"
-zip -r -o SLRNetworkMonitor-watchOS.zip .
-mv SLRNetworkMonitor-watchOS.zip "$rootDirectory"
+cd build/framework/
+echo -e "\nCreating ZIP archive"
+zip -r -o SLRNetworkMonitor.zip .
+mv SLRNetworkMonitor.zip "$rootDirectory"
 cd "$rootDirectory"
 
 echo -e "\nRelease Complete"
