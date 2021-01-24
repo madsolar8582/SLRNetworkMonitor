@@ -9,7 +9,6 @@ if [[ -d "build" ]]; then
 fi
 
 echo -e "\nBuilding the frameworks for distribution"
-
 echo -e "\nBuilding iOS Device"
 xcodebuild clean archive -project SLRNetworkMonitor.xcodeproj -scheme SLRNetworkMonitor-iOS -configuration Release -destination generic/platform=iOS -sdk iphoneos -archivePath build/archives/ios.xcarchive SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 echo -e "\nBuilding iOS Simulator"
@@ -71,7 +70,7 @@ for ((i=0;i<watchBCMapCount;i++)); do
   watchDebugSymbols+=" -debug-symbols ${watchBCMaps[i]}"
 done
 
-echo -e "\nCreating iOS XCFramework"
+echo -e "\nCreating XCFramework"
 # shellcheck disable=SC2086
 xcodebuild -create-xcframework -framework build/archives/ios.xcarchive/Products/Library/Frameworks/SLRNetworkMonitor.framework \
 -debug-symbols "$(pwd -P)"/build/archives/ios.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
@@ -94,10 +93,9 @@ $watchDebugSymbols \
 -debug-symbols "$(pwd -P)"/build/archives/watchos-sim.xcarchive/dSYMs/SLRNetworkMonitor.framework.dSYM \
 -output build/framework/SLRNetworkMonitor.xcframework
 
-echo -e "\nCreating distribution archive"
+echo -e "\nCreating ZIP archive"
 rootDirectory="$PWD"
 cd build/framework/
-echo -e "\nCreating ZIP archive"
 zip -r -o SLRNetworkMonitor.zip .
 mv SLRNetworkMonitor.zip "$rootDirectory"
 cd "$rootDirectory"

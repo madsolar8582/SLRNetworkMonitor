@@ -35,7 +35,8 @@ These instructions will get you up and running with SLRNetworkMonitor.
 
 | Version | Minimum Xcode Version | Minimum macOS SDK | Minimum iOS SDK | Minimum tvOS SDK | Minimum watchOS SDK |
 | ------- | --------------------- | ----------------- | --------------- | ---------------- | ------------------- |
-| 2.0.0 -> Current | 11.0 | 10.14 | 12.0 | 12.0 | 6.0 |
+| 2.0.2 -> Current | 12.0 | 10.14 | 12.0 | 12.0 | 6.0 |
+| 2.0.0 -> 2.0.1 | 11.0 | 10.14 | 12.0 | 12.0 | 6.0 |
 | 1.0.0 | 10.0 | 10.14 | 12.0 | 12.0 | N/A |
 
 This library depends on a few system frameworks and libraries. If you have Modules and Link Frameworks Automatically enabled, then there isn't much that needs to be done. However, if you do not, you need to link against the `Network`, `Foundation`, & the `CoreTelephony` (iOS only) frameworks. Additionally, both types of configurations must manually add `libresolv` to the Link Binary With Libraries build phase.

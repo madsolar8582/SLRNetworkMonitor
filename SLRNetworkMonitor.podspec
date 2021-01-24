@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = 'SLRNetworkMonitor'
-  s.version                   = '2.0.0'
+  s.version                   = '2.0.2'
   s.summary                   = 'Network status monitor for macOS, iOS, and tvOS.'
   s.description               = 'A Network status monitor for macOS, iOS, and tvOS that leverages Network.framework instead of SCNetworkReachability.'
   s.homepage                  = 'https://madsolar8582.github.io/SLRNetworkMonitor/'

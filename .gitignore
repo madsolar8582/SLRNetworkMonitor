@@ -27,6 +27,7 @@ Temporary Items
 ## Build generated
 build/
 DerivedData/
+SLRNetworkMonitor.zip
 
 ## Various settings
 *.pbxuser
