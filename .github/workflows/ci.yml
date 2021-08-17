@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Configure Xcode
       run: |
-        sudo xcode-select --switch /Applications/Xcode_12.5.app
+        sudo xcode-select --switch /Applications/Xcode_13.0.app
         xcrun xcodebuild -version
     - name: Build and Test
       run: env NSUnbufferedIO=YES xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme ${{ matrix.config['scheme'] }} -configuration Debug -destination '${{ matrix.config['destination'] }}' -testPlan ${{ matrix.config['scheme'] }} -parallel-testing-enabled YES ${{ matrix.config['options'] }}
