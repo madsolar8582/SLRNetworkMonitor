@@ -14,11 +14,11 @@ jobs:
     strategy:
       matrix:
         config:
-          - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=iOS Simulator,OS=latest,name=iPhone 12', options: '' }
+          - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=iOS Simulator,OS=latest,name=iPhone 13', options: '' }
           - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=macOS,variant=Mac Catalyst', options: 'CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO' }
           - { scheme: 'SLRNetworkMonitor-macOS', destination: 'platform=macOS', options: '' }
-          - { scheme: 'SLRNetworkMonitor-tvOS', destination: 'platform=tvOS Simulator,OS=latest,name=Apple TV 4K', options: '' }
-          - { scheme: 'SLRNetworkMonitor-watchOS', destination: 'platform=watchOS Simulator,OS=latest,name=Apple Watch Series 6 - 40mm', options: '' }
+          - { scheme: 'SLRNetworkMonitor-tvOS', destination: 'platform=tvOS Simulator,OS=latest,name=Apple TV 4K (2nd generation)', options: '' }
+          - { scheme: 'SLRNetworkMonitor-watchOS', destination: 'platform=watchOS Simulator,OS=latest,name=Apple Watch Series 7 - 41mm', options: '' }
     steps:
     - uses: actions/checkout@v2
     - name: Configure Xcode
