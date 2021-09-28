@@ -128,7 +128,7 @@ Please read [SUPPORT](https://github.com/madsolar8582/SLRNetworkMonitor/blob/mas
 
 ## License
 
-This project is licensed under the [LGPL v3](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/LICENSE.md) license.
+This project is licensed under the [LGPL v3](https://github.com/madsolar8582/SLRNetworkMonitor/blob/master/LICENSE.txt) license.
 
 ## Changes
 
