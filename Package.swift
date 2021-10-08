@@ -16,7 +16,13 @@ let package = Package(
             name: "SLRNetworkMonitor",
             path: ".",
             sources: ["Source"],
-            publicHeadersPath: "Source"
+            publicHeadersPath: "Source",
+            linkerSettings: [
+                .linkedFramework("Foundation"),
+                .linkedFramework("Network"),
+                .linkedFramework("CoreTelephony", .when(platforms: [.iOS])),
+                .linkedLibrary("resolv")
+            ]
         ),
         .testTarget(
             name: "SLRNetworkMonitorTests",
