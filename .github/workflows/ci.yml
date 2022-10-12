@@ -10,20 +10,20 @@ on:
       - '*'
 jobs:
   build:
-    runs-on: macOS-11
+    runs-on: macOS-12
     strategy:
       matrix:
         config:
-          - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=iOS Simulator,OS=latest,name=iPhone 13', options: '' }
+          - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=iOS Simulator,OS=latest,name=iPhone 14', options: '' }
           - { scheme: 'SLRNetworkMonitor-iOS', destination: 'platform=macOS,variant=Mac Catalyst', options: 'CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO' }
           - { scheme: 'SLRNetworkMonitor-macOS', destination: 'platform=macOS', options: '' }
           - { scheme: 'SLRNetworkMonitor-tvOS', destination: 'platform=tvOS Simulator,OS=latest,name=Apple TV 4K (2nd generation)', options: '' }
-          - { scheme: 'SLRNetworkMonitor-watchOS', destination: 'platform=watchOS Simulator,OS=latest,name=Apple Watch Series 7 - 41mm', options: '' }
+          - { scheme: 'SLRNetworkMonitor-watchOS', destination: 'platform=watchOS Simulator,OS=latest,name=Apple Watch Series 8 (41mm)', options: '' }
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Configure Xcode
       run: |
-        sudo xcode-select --switch /Applications/Xcode_13.0.app
+        sudo xcode-select --switch /Applications/Xcode_14.0.1.app
         xcrun xcodebuild -version
     - name: Build and Test
       run: env NSUnbufferedIO=YES xcodebuild clean test -project SLRNetworkMonitor.xcodeproj -scheme ${{ matrix.config['scheme'] }} -configuration Debug -destination '${{ matrix.config['destination'] }}' -testPlan ${{ matrix.config['scheme'] }} -parallel-testing-enabled YES ${{ matrix.config['options'] }}
